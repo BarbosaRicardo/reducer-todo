@@ -1,24 +1,24 @@
-import React from 'react';
-import logo from './logo.svg';
+/**********************************************************
+ * ❶ import { useReducer } from 'react'
+ * ❷ import { initialState, reducer } from reducer folder
+ *********************************************************/
+
+
+
+import React, { useReducer } from 'react';
+
+import { initialState, reducer } from './reducers/reducer'
+import TodoForm from './components/TodoForm.js';
+
 import './App.css';
 
 function App() {
+  const [state, dispatch] = useReducer(reducer, initialState)
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        <TodoForm dispatch={dispatch} />
+        <button onClick{() => dispatch({type: "removeCompleted" })}>Remove Complete</button>
+
     </div>
   );
 }

@@ -4,7 +4,7 @@ import React from 'react'
     return (
         <div>
             <p
-                className={props.item.complete ? "complete" : ""}
+                className={props.item.completed ? "completed" : ""}
                 onClick={()=> {
                     props.dispatch({type: "toggleCompleteness",
                     payload:props.item.id})
